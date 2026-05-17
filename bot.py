@@ -4,7 +4,7 @@ import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "8698655440:AAFKvfG3JSEDv22TYgj1ViwwA6djVnRWiRE")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8698655440:AAF_2a6sezSNktAG5ZNyjIWx792PwhcpiiE")
 
 CATEGORIES = {
     "🌟 ТОП-10 ЗМ за 21 век": [
