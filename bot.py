@@ -346,13 +346,7 @@ async def end(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("🛑 Игра завершена!")
 
 def main():
-    TOKEN = BOT_TOKEN
-    PORT = int(os.environ.get('PORT', '8443'))
-    APP_NAME = os.environ.get('RENDER_APP_NAME', 'football-spy-bot')
-    WEBHOOK_URL = f"https://{APP_NAME}.onrender.com/telegram"
-
-    app = Application.builder().token(TOKEN).build()
-
+    app = Application.builder().token(BOT_TOKEN).build()
     for cmd, handler in [
         ("start", start), ("status", status), ("newgame", newgame),
         ("join", join), ("deal", deal), ("offline", offline),
@@ -360,13 +354,8 @@ def main():
     ]:
         app.add_handler(CommandHandler(cmd, handler))
     app.add_handler(CallbackQueryHandler(button))
-
-    # Webhook вместо polling
-    app.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        webhook_url=WEBHOOK_URL,
-    )
+    print("⚽ Бот запущен! Много чатов — много игр!")
+    app.run_polling()
 
 if __name__ == "__main__":
     main()
